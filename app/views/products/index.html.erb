@@ -15,7 +15,9 @@
   </thead>
 
   <tbody>
-      <%= render @products %>
+    <% @products.each do |product| %>
+      <%= render partial: "product", locals: {product: product} %>
+    <% end %>
   </tbody>
 </table>
 </div>
