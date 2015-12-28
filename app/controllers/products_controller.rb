@@ -5,14 +5,14 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    #render layout: "products"
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-      @products = Product.all
-      end
 
+  end
 
   # GET /products/new
   def new
@@ -71,6 +71,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :string, :description, :image_url, :color, :price)
+      params.require(:product).permit(:name, :description, :image_url, :colour, :price)
     end
 end
