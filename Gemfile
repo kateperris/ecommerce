@@ -28,6 +28,9 @@ gem 'spring',        group: :development
 #devise
 gem 'devise'
 
+#cancancan for authorization
+gem 'cancancan'
+
 group :production do
   gem 'pg'
 end

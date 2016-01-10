@@ -54,8 +54,13 @@
 </nav>
 <h1>Welcome to Bike Berlin</h1>
 <h2>Your source for used bikes in Berlin</h2>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+
+<% if notice %>
+  <p class="alert alert-warning" role="alert"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-info" role="alert"><%= alert %></p>
+<% end %>
 <%= yield %>
 
 <footer class="site-footer">
