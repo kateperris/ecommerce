@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<div class="container">
+<div class="col-xs-12 col-md-6">
+
+<div class="thumbnail">
+  <img src="<%= @product.image_url %>" alt="Product image">
+
+
+<p>  
   <strong>Name:</strong>
   <%= @product.name %>
-</p>
-
-<p>
-  <strong>String:</strong>
-  <%= @product.string %>
 </p>
 
 <p>
@@ -15,10 +17,6 @@
   <%= @product.description %>
 </p>
 
-<p>
-  <strong>Image url:</strong>
-  <%= @product.image_url %>
-</p>
 
 <p>
   <strong>Color:</strong>
@@ -26,9 +24,13 @@
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong>Price:</strong><span class="glyphicon glyphicon-euro"></span>
   <%= @product.price %>
 </p>
+
+</div>
+</div>
+</div>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
