@@ -31,18 +31,19 @@ gem 'devise'
 #cancancan for authorization
 gem 'cancancan'
 
-group :production do
-  gem 'pg'
-end
-
-group :development, :test do
-  gem 'sqlite3'
-end
+## Pagination
+gem 'will_paginate', '~> 3.0.5'
 
 group :production do
   gem 'rails_12factor'
   gem 'pg'
 end
+
+
+group :development, :test do
+  gem 'sqlite3'
+end
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
