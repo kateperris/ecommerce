@@ -1,9 +1,11 @@
 require 'rails_helper'
+require 'spec_helper'
 
-	describe UsersController, :type => :controller do 
+	describe UsersController, :type => :controller do
 	  before do
-		@user = User.create!(email: "joe@bloggs.com", password: "test12345")
-	  end
+	  	@user = FactoryGirl.create(:user)
+	  	@usertwo = FactoryGirl.create(:usertwo)
+	end
 
 	describe "GET #show" do
 		context "User is logged in" do
@@ -25,10 +27,6 @@ require 'rails_helper'
 			end
 
 
-	before do
-		@usertwo = User.create!(email: "red@blue.com", password: "password123")	  
-	end
-
 		context "User cannot see incorrect show page" do
 			before do
 				sign_in @user
@@ -38,7 +36,7 @@ require 'rails_helper'
 				get :how, id: @usertwo.id
 				expect(response).to redirect_to(root_path)
 		end
-		
+
 	  end
 	end
 

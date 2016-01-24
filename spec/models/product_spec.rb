@@ -1,6 +1,8 @@
 require 'rails_helper'
+require 'spec_helper'
 
-describe Product do 
+
+describe Product do
 	context "when the product has comments"
 	before do
 		@product = Product.create!(name: "race bike")
@@ -19,4 +21,3 @@ describe Product do
 	end
 
 end
-
