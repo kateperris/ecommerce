@@ -31,6 +31,9 @@ gem 'devise'
 #cancancan for authorization
 gem 'cancancan'
 
+#stripe
+gem 'stripe'
+
 group :production do
   gem 'pg'
 end
