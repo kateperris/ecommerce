@@ -1,5 +1,5 @@
-require 'rails helper'
-require 'spec helper'
+
+require 'spec_helper'
 
 describe User, :type => :model do
 	it "should not validate users without an email address" do

@@ -34,6 +34,10 @@ gem 'cancancan'
 ## Pagination
 gem 'will_paginate', '~> 3.0.5'
 
+#stripe
+gem 'stripe'
+
+
 group :production do
   gem 'rails_12factor'
   gem 'pg'
@@ -48,6 +52,8 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'spork-rails'
   gem 'guard-spork'
+
+
 end
 
 

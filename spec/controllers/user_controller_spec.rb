@@ -1,45 +1,51 @@
 require 'rails_helper'
 require 'spec_helper'
 
-	describe UsersController, :type => :controller do
-	  before do
-	  	@user = FactoryGirl.create(:user)
-	  	@usertwo = FactoryGirl.create(:usertwo)
+describe UsersController, :type => :controller do 
+ 
+  # create test user
+	before do
+    # Always use factory data generators such as FactoryGirl
+		@user = FactoryGirl.create(:user)
+		@usertwo = FactoryGirl.create(:user)
 	end
 
 	describe "GET #show" do
-		context "User is logged in" do
-			before do
-				sign_in @user
-			end
-
-		it "Loads correct user details" do
-			get :show, id: @user.id
-			expect(response).to have_http_status(200)
-			expect(assigns(:user)).to eq @user
+		before do
+			sign_in(@user)
 		end
-	end
 
-		context "No user is logged in" do
-			 it "redirects to login" do
+		context "Loads correct user details" do
+			it "Gets Logged in User details" do 			
+				get :show
+				expect(response).to have_http_status(200)
+				expect(assigns(:user)).to eq @user
+			end
+		end
+
+		context "No user is logged in" do 
+			it "redirects to login" do
 				get :show, id: @user.id
 				expect(response).to redirect_to(root_path)
 			end
+		end
+	end
 
-
-		context "User cannot see incorrect show page" do
-			before do
-				sign_in @user
-			end
-
-			it "redirects to user#index" do
-				get :how, id: @usertwo.id
-				expect(response).to redirect_to(root_path)
+	describe "GET Unauthorized page" do
+		before do
+			sign_in(@user)
 		end
 
-	  end
+		context "Attempt to access show page of usertwo" do
+			it "redirects to login" do 
+				get :show, id: @usertwo.id
+				expect(response).to have_http_status(401)
+				expect(response).to redirect_to(root_path)
+			end
+		end
 	end
 
 end
 
-end
+
+
