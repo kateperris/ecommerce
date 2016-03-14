@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'spec_helper'
+
 
 describe UsersController, :type => :controller do 
   # create test user
@@ -15,22 +15,20 @@ describe UsersController, :type => :controller do
     end
 
     context "Loads correct user details" do
-
       it "Gets Logged in User details" do       
-
-        get :show, @user.id
-		  expect(response).to have_http_status(200)
-		  expect(assigns(:user)).to eq @user
+        get :show, id: @user.id
+		      expect(response).to have_http_status(200)
+		      expect(assigns(:user)).to eq @user
       end
     end
+  end
   
 
-  describe "Unauthorized access when"
+  describe "Unauthorized access when" do
 
     context "No user is logged in" do 
       it "redirects to login" do
         get :show, id: @user.id
-
         expect(response).to redirect_to(new_user_session_path) 
       end
     end
@@ -44,9 +42,8 @@ describe UsersController, :type => :controller do
     
     context "Attempt to access show page of usertwo" do
       it "redirects to login" do 
-        get :show, id: @usertwo.id
-  expect(response).to have_http_status(401)
-  expect(response).to redirect_to(root_path)
+        get :edit, id: @usertwo.id
+        expect(response).to redirect_to(root_path)
       end
     end
   end

@@ -5,12 +5,10 @@ Rails.application.routes.draw do
     resources :comments
 
   end
-  resources :users
-
-
-  resources :users
 
   devise_for :users
+
+  resources :users
   
   resources :products
 
@@ -23,11 +21,12 @@ Rails.application.routes.draw do
 
   post 'static_pages/thank_you'
 
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#landing_page'
+  root 'static_pages#about'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
