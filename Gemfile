@@ -37,6 +37,9 @@ gem 'will_paginate', '~> 3.0.5'
 #stripe
 gem 'stripe'
 
+#byebug
+gem 'byebug'
+
 
 group :production do
   gem 'rails_12factor'

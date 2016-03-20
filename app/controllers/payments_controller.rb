@@ -6,7 +6,7 @@ class PaymentsController < ApplicationController
 		# Create the charge on Stripe's servers - this will charge the user's card
 		begin
 			charge = Stripe::Charge.create(
-				:amount => @product.price, 
+				:amount => @product.price,
 				:currency => "usd",
 				:source => token,
 				:description => params[:stripeEmail]
@@ -15,7 +15,7 @@ class PaymentsController < ApplicationController
 				if charge.paid
 					Order.create(product_id: @product.id, user_id: @user.id, total: @product.price)
 				end
-				
+
 		rescue Stripe::CardError => e  
 			# The card has been declined
 			body = e.json_body
