@@ -40,6 +40,8 @@ gem 'stripe'
 #byebug
 gem 'byebug'
 
+#angularjs
+gem 'angularjs-rails'
 
 group :production do
   gem 'rails_12factor'
