@@ -10,11 +10,8 @@ class ProductsController < ApplicationController
       if Rails.env.development?
         @products = Product.where("name LIKE ?", "%#{search_term}%")
       else
-        @products = Product.where("name ilike ?", "%#{search_term}%")
+        @products = Product.all    
       end
-    else
-      @products = Product.all    
-    end
     respond_with @products
   end
 
@@ -47,7 +44,7 @@ class ProductsController < ApplicationController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
-  end
+
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
@@ -61,7 +58,7 @@ class ProductsController < ApplicationController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
-  end
+end
 
   # DELETE /products/1
   # DELETE /products/1.json
