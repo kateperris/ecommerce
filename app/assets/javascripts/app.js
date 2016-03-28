@@ -18,7 +18,7 @@ app.factory('models', ['$resource', function($resource){
 app.controller('OrdersCtrl', ['$scope', 'models', function($scope, models){
 	$scope.orders = models.orders.query();
 	$scope.products = models.products.query();
-
+console.log($scope.orders.object)
 
 $scope.addOrder = function(){
 	if(!scope.newOrder.product_id || $scope.newOrder.total === ''){ return; }
@@ -34,4 +34,3 @@ $scope.deleteOrder = function(order){
 	$scope.orders.splice($scope.orders.indexOf(order), 1);
 }
 }]);
-console.log($scope.orders.object)

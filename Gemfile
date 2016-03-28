@@ -46,6 +46,12 @@ gem 'angularjs-rails'
 #dalli
 gem 'dalli'
 
+#redis
+gem 'redis-rails'
+
+#new relic
+gem 'newrelic_rpm'
+
 group :production do
   gem 'rails_12factor'
   gem 'pg'
