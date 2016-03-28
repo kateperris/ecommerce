@@ -2,6 +2,7 @@
 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="productimg">
 	<%= image_tag(product.image_url, :class => "img-responsive") %>
 </div>
+<% cache product do %>
 <div class="col-lg-16 col-md-6 col-sm-12 col-xs-12 productinfo">
 	<p>Name: <%= product.name %></p>
 	<p>Description: <%= product.description %></p>
@@ -9,3 +10,4 @@
 	<p>Price: <%= product.price %></p></br>
 	<% logger.debug "Product: #{@product.name}"%>
 </div>
+<% end %>

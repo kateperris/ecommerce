@@ -3,6 +3,8 @@
 <div class="container">
 <div class="col-xs-12 col-md-6">
 
+<% cache @product do %>
+
 <div class="thumbnail">
   <%= image_tag(@product.image_url, class: "img-zoom", :data_zoom_image => @product.image_url) %>
 </div>
@@ -30,6 +32,8 @@
 
 <p>Average Rating: <div class="rated" data-score="<%= @product.average_rating %>"></div>
 </p>
+
+<% end %>
 
 <p>
 <%= form_tag "/payments/create" do %>

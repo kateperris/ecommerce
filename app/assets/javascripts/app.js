@@ -6,7 +6,7 @@ $(document).on('ready page:load', function() {
 
 app.factory('models', ['$resource', function($resource){
 	var orders_model = $resource("/orders/:id.json", {id: "@id"});
-	var products_model = $resource("/products/:id.json", id: "@id"});
+	var products_model = $resource("/products/:id.json", {id: "@id"});
 
 	var x = {
 		orders: orders_model,
@@ -18,7 +18,7 @@ app.factory('models', ['$resource', function($resource){
 app.controller('OrdersCtrl', ['$scope', 'models', function($scope, models){
 	$scope.orders = models.orders.query();
 	$scope.products = models.products.query();
-]);
+
 
 $scope.addOrder = function(){
 	if(!scope.newOrder.product_id || $scope.newOrder.total === ''){ return; }
@@ -33,3 +33,5 @@ $scope.deleteOrder = function(order){
 	models.orders.delete(order);
 	$scope.orders.splice($scope.orders.indexOf(order), 1);
 }
+}]);
+console.log($scope.orders.object)

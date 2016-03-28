@@ -43,6 +43,9 @@ gem 'byebug'
 #angularjs
 gem 'angularjs-rails'
 
+#dalli
+gem 'dalli'
+
 group :production do
   gem 'rails_12factor'
   gem 'pg'
