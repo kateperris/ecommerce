@@ -5,16 +5,15 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    if params[:q]
-      search_term = params[:q]
-      if Rails.env.development?
-        @products = Product.where("name LIKE ?", "%#{search_term}%")
-      else
-        @products = Product.all    
-      end
+    search_term = params[:q]
+    if Rails.env.development? && search_term.present?
+      @products = Product.where("name LIKE ?", "%#{search_term}%")
+    else
+      @products = Product.all  
+    end
+
     respond_with @products
   end
-end
 
   # GET /products/1
   # GET /products/1.json
@@ -45,6 +44,7 @@ end
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+  end
 
 
   # PATCH/PUT /products/1
@@ -59,7 +59,7 @@ end
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
-end
+  end
 
   # DELETE /products/1
   # DELETE /products/1.json
