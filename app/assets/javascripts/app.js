@@ -21,11 +21,11 @@ app.controller('OrdersCtrl', ['$scope', 'models', function($scope, models){
 console.log($scope.orders.object)
 
 $scope.addOrder = function(){
-	if(!scope.newOrder.product_id || $scope.newOrder.total === ''){ return; }
+	if(!$scope.newOrder.product_id || $scope.newOrder.total === ''){ return; }
 	order = models.orders.save($scope.newOrder, function(){
 		recent_order = models.orders.get({id: order.id});
 		$scope.orders.push(recent_order);
-		$scope.newOrder - '';
+		$scope.newOrder = '';
 	});	
 }
 
